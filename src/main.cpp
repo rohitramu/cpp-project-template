@@ -3,7 +3,7 @@
 
 #include <utils/utils.h>
 
-int main(int argc, char *argv[])
+int main(int argc, char* argv[])
 {
     std::string name = "";
 
@@ -18,6 +18,7 @@ int main(int argc, char *argv[])
     }
 
     std::cout << utils::Hello(name) << std::endl;
+    // std::cout << "Hello, " + name << std::endl;
 
     return 0;
 }

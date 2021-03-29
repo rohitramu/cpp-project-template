@@ -1,0 +1,1 @@
+include(format_source_files.cmake)

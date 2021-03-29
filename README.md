@@ -12,6 +12,8 @@
   - [`run`](#run)
   - [`clean`](#clean)
 - [Required tools](#required-tools)
+  - [All platforms](#all-platforms)
+  - [Windows](#windows)
 
 ## About
 
@@ -102,7 +104,7 @@ for more information about configuration options.
 
 ### `./init.ps1`
 
-Sets up the build/development environment, and initializes the other commands.  
+Sets up the build/development environment, and initializes the other commands.
 **NOTE**: Must be run each time a new terminal is opened.  After running `./init.ps1`, make sure to
 launch your IDE or text editor ***from this terminal window*** so that environment variables are
 preserved.
@@ -122,18 +124,22 @@ Deletes the generated build system and all build outputs.
 
 ## Required tools
 
-[PowerShell Core](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell)  
+### All platforms
+
+[PowerShell Core](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell):
 Required in order to run the [commands](#commands) in the repo.
 
-[MinGW](http://www.mingw.org/)  
-The toolchain to use for compilation of sources.
-
-[CMake](https://github.com/Kitware/CMake/releases)  
+[CMake](https://github.com/Kitware/CMake/releases):
 For generating a build system on/for any platform.
-NOTE: Use GitHub, not official site for download.
+NOTE: Use the provided GitHub link, not the official CMake site for download.
 
-[Ninja](https://github.com/ninja-build/ninja/releases)  
+[Ninja](https://github.com/ninja-build/ninja/releases):
 For building the project using the generated build system and selected toolchain.
 
-[LLVM](http://releases.llvm.org/download.html)  
-For Clang tools (especially clang-format).
+### Windows
+
+[LLVM](http://releases.llvm.org/download.html):
+For Clang tools (clang++, clang-format, clang-tidy).
+
+[MinGW-w64](http://mingw-w64.org/doku.php/download):
+The toolchain to use for compilation of sources.

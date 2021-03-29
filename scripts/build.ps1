@@ -8,26 +8,21 @@ if ([string]::IsNullOrWhitespace($buildSystemDir)) {
 
 log "Starting build..." -Color Green
 
-log 'Formatting source files'
-Get-ChildItem -Path $Env:SRC_DIR -Include '*.cpp', '*.cc', '*.h' -Recurse | ForEach-Object {
-    Write-Host "Test: $($_.Fullname)"
-    & 'clang-format' @(
-        '-i',
-        '-style=file'
-        $_.FullName
-    )
-}
+# log 'Formatting source files'
+# Get-ChildItem -Path $Env:SRC_DIR -Include '*.cpp', '*.cc', '*.h', '*.hpp' -Recurse | ForEach-Object {
+#     Write-Host "[FORMAT] $($_.Fullname)"
+#     & 'clang-format' @(
+#         '-i', # In-place format (i.e. format file, don't output to console)
+#         '-style=file', # Get style rules from ".clang-format" file in root
+#         '-fallback-style=none', # Fail if the ".clang-format" file doesn't exist
+#         $_.FullName # File path
+#     )
+# }
 
-log 'Configuring build system'
+log 'Configuring and generating build system'
 & cmake -S . -B "$buildSystemDir" -G Ninja
 if (-Not $?) {
-    Write-Error "Failed to configure build system.  Error code: $LASTEXITCODE."
-}
-
-log 'Generating build system'
-& cmake "$buildSystemDir"
-if (-Not $?) {
-    Write-Error "Failed to generate build system.  Error code: $LASTEXITCODE."
+    Write-Error "Failed to configure or generate build system.  Error code: $LASTEXITCODE."
 }
 
 log 'Building project'
