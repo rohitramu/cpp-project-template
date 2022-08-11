@@ -1,20 +1,11 @@
-#TODO: Convert all scripts to *.cmake files (and use cmake cache variables instead of
-# environment variables).  This will allow IDEs to be opened directly instead of through an
-# initialized PowerShell command line.
-
-param(
-    [Parameter(Position = 0)]
-    [string] $BuildConfiguration = 'Debug'
-)
-
 $ErrorActionPreference = 'Stop'
 
 #############
 # Constants #
 #############
 
-#USER-TODO: Update the project name
-$ProjectName = 'hello'
+#USER-TODO: Update the output binary file's name
+$BuildOutputBinaryFile = 'hello'
 
 ##############
 # Validation #
@@ -30,8 +21,8 @@ if ([string]::IsNullOrWhiteSpace($BuildConfiguration)) {
 #############################
 
 # Project name
-$Env:PROJECT_NAME = $ProjectName
-Write-Host "[ENV] PROJECT_NAME = `"$Env:PROJECT_NAME`""
+$Env:BUILD_OUTPUT_BIN_FILE = $BuildOutputBinaryFile
+Write-Host "[ENV] BUILD_OUTPUT_BIN_FILE = `"$Env:BUILD_OUTPUT_BIN_FILE`""
 
 # Project root
 $Env:PROJECT_ROOT = $PSScriptRoot

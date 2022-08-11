@@ -21,3 +21,4 @@ IndentCaseLabels: true
 KeepEmptyLinesAtTheStartOfBlocks: false
 MaxEmptyLinesToKeep: 1
 NamespaceIndentation: All
+PointerAlignment: Left

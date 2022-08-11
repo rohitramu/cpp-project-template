@@ -6,6 +6,10 @@
   - [Adding libraries](#adding-libraries)
   - [Choosing a build configuration](#choosing-a-build-configuration)
   - [Changing the default code style](#changing-the-default-code-style)
+- [Building and running your code](#building-and-running-your-code)
+  - [1. Configure the build system](#1-configure-the-build-system)
+  - [2. Build your code](#2-build-your-code)
+  - [3. Run your code](#3-run-your-code)
 - [Commands](#commands)
   - [`./init.ps1`](#initps1)
   - [`build`](#build)
@@ -100,14 +104,39 @@ The `.clang-format` file in the project root can be used for configuring the def
 See the [clang-format documentation](https://releases.llvm.org/3.7.1/tools/docs/ClangFormatStyleOptions.html)
 for more information about configuration options.
 
+## Building and running your code
+
+Other build systems may be used, but in the interest of keeping this simple and flexible, I will use
+Ninja in these instructions.
+
+### 1. Configure the build system
+
+```shell
+# You can use a different folder name instead of ".build".
+# If you know what you are doing, you can use a different generator.
+# Note that the build step will be different in this case.
+cmake -B ".build" -G Ninja
+```
+
+### 2. Build your code
+
+```shell
+# Use the same folder name that you used in step 1.
+ninja -C ".build"
+```
+
+### 3. Run your code
+
+```shell
+# Run the executable found in the ".out" folder (change the name to your project name).
+./.out/hello
+```
+
 ## Commands
 
 ### `./init.ps1`
 
 Sets up the build/development environment, and initializes the other commands.
-**NOTE**: Must be run each time a new terminal is opened.  After running `./init.ps1`, make sure to
-launch your IDE or text editor ***from this terminal window*** so that environment variables are
-preserved.
 
 ### `build`
 
@@ -138,8 +167,8 @@ For building the project using the generated build system and selected toolchain
 
 ### Windows
 
-[LLVM](http://releases.llvm.org/download.html):
+[LLVM](https://github.com/llvm/llvm-project/releases):
 For Clang tools (clang++, clang-format, clang-tidy).
 
-[MinGW-w64](http://mingw-w64.org/doku.php/download):
+[MinGW-w64](https://www.mingw-w64.org/downloads):
 The toolchain to use for compilation of sources.

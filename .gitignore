@@ -1,3 +1,7 @@
 .*
 !.gitignore
 !.clang-format
+CMakeFiles/
+cmake_install.cmake
+*.ninja
+CMakeCache.txt
