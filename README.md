@@ -10,11 +10,6 @@
   - [1. Configure the build system](#1-configure-the-build-system)
   - [2. Build your code](#2-build-your-code)
   - [3. Run your code](#3-run-your-code)
-- [Commands](#commands)
-  - [`./init.ps1`](#initps1)
-  - [`build`](#build)
-  - [`run`](#run)
-  - [`clean`](#clean)
 - [Required tools](#required-tools)
   - [All platforms](#all-platforms)
   - [Windows](#windows)
@@ -132,31 +127,9 @@ ninja -C ".build"
 ./.out/hello
 ```
 
-## Commands
-
-### `./init.ps1`
-
-Sets up the build/development environment, and initializes the other commands.
-
-### `build`
-
-Generates a build system and executes a build.
-
-### `run`
-
-Runs the output of the build.  This command can take any number of arguments.  These arguments
-are passed to the built executable (i.e. your program).
-
-### `clean`
-
-Deletes the generated build system and all build outputs.
-
 ## Required tools
 
 ### All platforms
-
-[PowerShell Core](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell):
-Required in order to run the [commands](#commands) in the repo.
 
 [CMake](https://github.com/Kitware/CMake/releases):
 For generating a build system on/for any platform.
